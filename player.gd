@@ -14,8 +14,10 @@ func _physics_process(delta):
 		$AnimationPlayer.play("soldier_walk")
 	if Input.is_action_pressed("move_down"):
 		input_vector.y += 1
+		$AnimationPlayer.play("soldier_walk")
 	if Input.is_action_pressed("move_up"):
 		input_vector.y -= 1
+		$AnimationPlayer.play("soldier_walk")
 	if input_vector == Vector2.ZERO:
 		$AnimationPlayer.play("soldier_idle")
 		print("Player is not moving")
