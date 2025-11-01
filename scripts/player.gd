@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 100
+var speed = 2
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -28,4 +28,4 @@ func _physics_process(delta):
 	
 	velocity = input_vector * speed
 	
-	move_and_slide()
+	move_and_collide(velocity)
