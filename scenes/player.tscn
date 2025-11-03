@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cdsbx888ci2wj" path="res://art/characters/soldier/Soldier.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(48, 57.25)
+size = Vector2(53, 60.25)
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
@@ -74,7 +74,7 @@ hframes = 9
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(29, 29.375)
+position = Vector2(31.5, 30.875)
 shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
