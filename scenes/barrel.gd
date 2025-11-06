@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends StaticBody2D
 var health = 30
 var isAlive = true
 
@@ -9,7 +9,7 @@ func take_damage(amount):
 	else:
 		return
 	
-	if health == 0:
+	if health <= 0:
 		isAlive = false
-		$BarrelSprite.visible = false
-		$Area2D/BarrelCollision.disabled = true
+		queue_free() # deletes the node from the existence 
+		# remember this method because it's very helpful and handy to handle the death method

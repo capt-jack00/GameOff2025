@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://n8615qki52vw"]
+[gd_scene load_steps=5 format=3 uid="uid://n8615qki52vw"]
 
 [ext_resource type="Script" uid="uid://8g3xsqr1qwiy" path="res://scenes/barrel.gd" id="1_ptqd7"]
 [ext_resource type="Texture2D" uid="uid://dxhk7g2xjpk1f" path="res://art/entities/barrel.png" id="1_q36op"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8wf6"]
+size = Vector2(52, 56)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptqd7"]
 size = Vector2(46, 49)
 
-[node name="Barrel" type="CharacterBody2D"]
+[node name="Barrel" type="StaticBody2D"]
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("1_ptqd7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_n8wf6")
 
 [node name="BarrelSprite" type="Sprite2D" parent="."]
 texture_filter = 1
