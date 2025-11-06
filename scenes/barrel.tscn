@@ -9,7 +9,7 @@ size = Vector2(52, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptqd7"]
 size = Vector2(46, 49)
 
-[node name="Barrel" type="StaticBody2D"]
+[node name="Barrel" type="CharacterBody2D"]
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("1_ptqd7")
@@ -30,3 +30,5 @@ position = Vector2(0, -0.5)
 
 [node name="BarrelCollision" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ptqd7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
