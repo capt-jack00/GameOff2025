@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ddxxdvt7v6g6j"]
+[gd_scene load_steps=0 format=3 uid="uid://ddxxdvt7v6g6j"]
 
 [node name="WorldBorder" type="StaticBody2D"]
 
