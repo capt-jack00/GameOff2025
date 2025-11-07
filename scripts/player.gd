@@ -30,7 +30,7 @@ func _physics_process(delta):
 	
 	# --- ATTACK ---
 	if input_vector.x != 0.0:		#check for 0 is needed so later it doesn't multiply by 0
-		update_attack_hitbox(input_vector.x)	
+		update_attack_hitbox(input_vector.x)	#updates sword hitbox based on player rotation
 		
 	if Input.is_action_just_pressed("left_mb"):
 		$attack_hitbox.monitoring = true
@@ -52,6 +52,6 @@ func _physics_process(delta):
 	move_and_collide(velocity)
 	
 
-func _on_attack_hitbox_area_entered(area: Area2D) -> void:
+func _on_attack_hitbox_area_entered(area: Area2D) -> void:		#checks if sword hit box is inside another thing hurtbox
 	if area.is_in_group("hurtbox"):
 		area.get_parent().take_damage(attack_damage)
