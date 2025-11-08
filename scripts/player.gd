@@ -17,7 +17,7 @@ func rotate_sword_hitbox():
 	# when you use tan on angle you get ratio of square triangle legs. Here is exactly the same process but
 	# in reverse.
 	var offset = 0
-	if mousePosAroundCenterOfScreen.y > 0:	#set offset based on where the mouse is
+	if mousePosAroundCenterOfScreen.y >= 0:	#set offset based on where the mouse is
 		offset = -25
 	else:
 		offset = 25
