@@ -10,7 +10,7 @@ func update_attack_hitbox(direction):		#updates sword hitbox based on player rot
 	$attack_hitbox.position.x = 0			#return to basic value so the hitbox doesn't go away
 	$attack_hitbox.position.x += offset * direction
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_vector = Vector2.ZERO
 
 	if Input.is_action_pressed("move_right"):	#D

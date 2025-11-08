@@ -84,7 +84,6 @@ script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(33, 36)
 scale = Vector2(3, 3)
 texture = ExtResource("2_onrkg")
 hframes = 9
@@ -93,10 +92,8 @@ frame = 18
 
 [node name="PAttackHitbox" type="Area2D" parent="Sprite2D"]
 visibility_layer = 2
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(31.5, 30.875)
 shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -2,7 +2,7 @@ extends CharacterBody2D
 var health = 30
 var isAlive = true
 var alreadyTakenDamage = false	#flag to prevent player from dealing damage 2 times to an object in single attack
-var speed = 1
+var speed = 0.5
 @onready var target = get_tree().get_first_node_in_group("player")
 
 # QUICKNOTE: We can't really use collision for enemies because when collision is applied then
@@ -11,7 +11,7 @@ var speed = 1
 # like in terraria. There is no player-enemy collision but when player is getting hit it just throws 
 # him back away making an illusion of the collison
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target.get_node("attack_hitbox").monitoring == false:	#check if player finished attack
 		alreadyTakenDamage = false
 	

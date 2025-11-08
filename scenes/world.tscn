@@ -316,7 +316,6 @@ position = Vector2(243, 60)
 monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="Player/attack_hitbox"]
-position = Vector2(34, 33)
 scale = Vector2(4.4, 3.3)
 shape = SubResource("RectangleShape2D_k0juu")
 debug_color = Color(1, 1, 1, 0.41960785)
