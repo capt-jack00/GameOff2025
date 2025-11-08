@@ -4,6 +4,7 @@ var speed = 5
 @export var attack_damage := 10
 
 #TODO:
+
 func rotate_sword_hitbox():
 	var mousePos = get_viewport().get_mouse_position()
 	var windowSize = get_viewport().get_visible_rect().size
