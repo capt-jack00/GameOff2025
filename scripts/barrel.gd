@@ -2,7 +2,7 @@ extends CharacterBody2D
 var health = 30
 var isAlive = true
 var alreadyTakenDamage = false	#flag to prevent player from dealing damage 2 times to an object in single attack
-var speed = 10
+var speed = 1
 @onready var target = get_tree().get_first_node_in_group("player")
 
 # QUICKNOTE: We can't really use collision for enemies because when collision is applied then
@@ -16,10 +16,11 @@ func _physics_process(delta):
 		alreadyTakenDamage = false
 	
 	if is_instance_valid(target):
-		var dir = (target.global_position - global_position).normalized()
-		velocity = dir * speed
-		move_and_slide()
-
+		var direction = (target.global_position - global_position).normalized()
+		velocity = direction * speed
+		position += velocity	#move barrel
+		if move_and_collide(velocity, true):	#checks only if collision between barrel and player occured
+			position -= velocity		#without it barrel will move player
 		
 func take_damage(amount):
 	if isAlive && !alreadyTakenDamage:
