@@ -21,7 +21,7 @@ func rotate_sword_hitbox():
 		offset = -25
 	else:
 		offset = 25
-	$attack_hitbox/shape.position.x = 0
+	$attack_hitbox/shape.position.x = 0 
 	$attack_hitbox/shape.position.x += offset	
 	
 func _physics_process(_delta):
