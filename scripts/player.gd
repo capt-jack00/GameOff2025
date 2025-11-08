@@ -4,11 +4,25 @@ var speed = 5
 @export var attack_damage := 10
 
 #TODO:
-
-func update_attack_hitbox(direction):		#updates sword hitbox based on player rotation
-	var offset = 16
-	$attack_hitbox.position.x = 0			#return to basic value so the hitbox doesn't go away
-	$attack_hitbox.position.x += offset * direction
+func rotate_sword_hitbox():
+	var mousePos = get_viewport().get_mouse_position()
+	var windowSize = get_viewport().get_visible_rect().size
+	var mousePosAroundCenterOfScreen = windowSize / 2 - mousePos
+	$attack_hitbox.rotation = PI / 2 - atan(mousePosAroundCenterOfScreen.x / mousePosAroundCenterOfScreen.y)
+	# equastion above works by calculating how far away from center of screen is mouse position and then
+	# doing reverse of trygonometric function(tan) to get angle at which should box be rotated
+	# '-' is here because it was rotating in wrong directionsd
+	# PI / 2 is here because it was displaced (PI / 2 is 90 degrees in radians) so it just got rotated right by
+	# 90 degrees
+	# when you use tan on angle you get ratio of square triangle legs. Here is exactly the same process but
+	# in reverse.
+	var offset = 0
+	if mousePosAroundCenterOfScreen.y > 0:	#set offset based on where the mouse is
+		offset = -25
+	else:
+		offset = 25
+	$attack_hitbox/shape.position.x = 0
+	$attack_hitbox/shape.position.x += offset	
 	
 func _physics_process(_delta):
 	var input_vector = Vector2.ZERO
@@ -17,7 +31,7 @@ func _physics_process(_delta):
 		input_vector.x += 1
 		$Sprite2D.flip_h = false
 		
-	if Input.is_action_pressed("move_left"):	#A
+	if Input.is_action_pressed("move_left"):	#s
 		input_vector.x -= 1
 		$Sprite2D.flip_h = true
 		
@@ -29,8 +43,7 @@ func _physics_process(_delta):
 	
 	
 	# --- ATTACK ---
-	if input_vector.x != 0.0:		#check for 0 is needed so later it doesn't multiply by 0
-		update_attack_hitbox(input_vector.x)	#updates sword hitbox based on player rotation
+	rotate_sword_hitbox()
 		
 	if Input.is_action_just_pressed("left_mb"):
 		$attack_hitbox.monitoring = true

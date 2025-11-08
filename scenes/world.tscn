@@ -316,13 +316,12 @@ position = Vector2(243, 60)
 monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="Player/attack_hitbox"]
-scale = Vector2(4.4, 3.3)
+scale = Vector2(4, 3.3)
 shape = SubResource("RectangleShape2D_k0juu")
 debug_color = Color(1, 1, 1, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Area2D" parent="." instance=ExtResource("2_4wyf3")]
-position = Vector2(0, 1)
 
 [connection signal="area_entered" from="Player/attack_hitbox" to="Player" method="_on_attack_hitbox_area_entered"]
