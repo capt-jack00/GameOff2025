@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var health = 30
 var isAlive = true
+var alreadyTakenDamage = false	#flag to prevent player from dealing damage 2 times to an object in single attack
 var speed = 10
 @onready var target = get_tree().get_first_node_in_group("player")
 
@@ -11,6 +12,9 @@ var speed = 10
 # him back away making an illusion of the collison
 
 func _physics_process(delta):
+	if target.get_node("attack_hitbox").monitoring == false:	#check if player finished attack
+		alreadyTakenDamage = false
+	
 	if is_instance_valid(target):
 		var dir = (target.global_position - global_position).normalized()
 		velocity = dir * speed
@@ -18,9 +22,10 @@ func _physics_process(delta):
 
 		
 func take_damage(amount):
-	if isAlive:
+	if isAlive && !alreadyTakenDamage:
 		health -= amount
 		print("Enemy took", amount, "damage! Remaining:", health)
+		alreadyTakenDamage = true
 	else:
 		return
 	

@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed = 2
 @export var attack_damage := 10
 
-#TODO: 
+#TODO:
 
 func update_attack_hitbox(direction):		#updates sword hitbox based on player rotation
 	var offset = 16
@@ -35,13 +35,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("left_mb"):
 		$attack_hitbox.monitoring = true
 		$AnimationPlayer.play("p_attack")
-		await $AnimationPlayer.animation_finished
+		await $AnimationPlayer.animation_finished	
 		$attack_hitbox.monitoring = false
 		print("Attack!")
 		
 	#	==================	Animation handling	=========================
-	if !$AnimationPlayer.current_animation == "p_attack":	
-		if input_vector == Vector2.ZERO:
+	if $AnimationPlayer.current_animation != "p_attack":	# makes sure that attack doesn't get overwritten
+		if input_vector == Vector2.ZERO:		# checks if player doesn't move
 			$AnimationPlayer.play("soldier_idle")
 		else:
 			$AnimationPlayer.play("soldier_walk")
