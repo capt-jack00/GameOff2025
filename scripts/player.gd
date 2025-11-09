@@ -19,8 +19,12 @@ func rotate_sword_hitbox():
 	# in reverse.
 	var offset = 0
 	if mousePosAroundCenterOfScreen.y >= 0:	#set offset based on where the mouse is
+		$attack_hitbox/shape/StrikeSprite.flip_h = true
+		$attack_hitbox/shape/StrikeSprite.flip_v = true
 		offset = -25
 	else:
+		$attack_hitbox/shape/StrikeSprite.flip_h = false
+		$attack_hitbox/shape/StrikeSprite.flip_v = false
 		offset = 25
 	$attack_hitbox/shape.position.x = 0 
 	$attack_hitbox/shape.position.x += offset	
@@ -30,11 +34,11 @@ func _physics_process(_delta):
 
 	if Input.is_action_pressed("move_right"):	#D
 		input_vector.x += 1
-		$Sprite2D.flip_h = false
+		$PlayerModelSprite.flip_h = false
 		
 	if Input.is_action_pressed("move_left"):	#s
 		input_vector.x -= 1
-		$Sprite2D.flip_h = true
+		$PlayerModelSprite.flip_h = true
 		
 	if Input.is_action_pressed("move_down"):	#S
 		input_vector.y += 1
@@ -46,11 +50,14 @@ func _physics_process(_delta):
 	# --- ATTACK ---
 	rotate_sword_hitbox()
 		
-	if Input.is_action_just_pressed("left_mb"):
+	if Input.is_action_just_pressed("left_mb") && !$attack_hitbox.monitoring:
+		$AnimationPlayer.play("p_attack")			#play animation of player attacking
+		$attack_hitbox/shape/StrikeSprite.visible = true		#makes strike sprite visible (sprite in front of player)
+		$attack_hitbox/shape/AnimationPlayer.play("strike")		#plays animation of strike
 		$attack_hitbox.monitoring = true
-		$AnimationPlayer.play("p_attack")
 		await $AnimationPlayer.animation_finished	
 		$attack_hitbox.monitoring = false
+		$attack_hitbox/shape/StrikeSprite.visible = false
 		print("Attack!")
 		
 	#	==================	Animation handling	=========================

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds4p4phucik"]
+[gd_scene load_steps=14 format=3 uid="uid://ds4p4phucik"]
 
 [ext_resource type="Texture2D" uid="uid://qdxekrrtfc6h" path="res://art/map/ground/ground.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://dtd5ljfogxs3y" path="res://scenes/player.tscn" id="1_rwgxs"]
@@ -295,8 +295,6 @@ pattern_0 = SubResource("TileMapPattern_7r4gi")
 pattern_1 = SubResource("TileMapPattern_w7kh3")
 pattern_2 = SubResource("TileMapPattern_e3hyu")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
-
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -312,16 +310,6 @@ position = Vector2(243, 60)
 
 [node name="Player" parent="." instance=ExtResource("1_rwgxs")]
 
-[node name="attack_hitbox" type="Area2D" parent="Player"]
-monitoring = false
-
-[node name="shape" type="CollisionShape2D" parent="Player/attack_hitbox"]
-scale = Vector2(4, 3.3)
-shape = SubResource("RectangleShape2D_k0juu")
-debug_color = Color(1, 1, 1, 0.41960785)
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Area2D" parent="." instance=ExtResource("2_4wyf3")]
-
-[connection signal="area_entered" from="Player/attack_hitbox" to="Player" method="_on_attack_hitbox_area_entered"]
