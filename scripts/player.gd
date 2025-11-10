@@ -46,6 +46,10 @@ func _physics_process(_delta):
 		
 	if Input.is_action_pressed("move_up"):		#W
 		input_vector.y -= 1
+		
+	input_vector = input_vector.normalized()
+	velocity = input_vector * speed * 50	#idk why but move_and_slide is a lot slower than move_and_collide and because of that I needed to multiply this value by 50
+	move_and_slide()	#Moves player and doesn't block him on wall
 	
 	
 	# --- ATTACK ---
@@ -69,10 +73,6 @@ func _physics_process(_delta):
 			$AnimationPlayer.play("soldier_idle")
 		else:
 			$AnimationPlayer.play("soldier_walk")
-
-	input_vector = input_vector.normalized()
-	velocity = input_vector * speed * 50	#idk why but move_and_slide is a lot slower than move_and_collide and because of that I needed to multiply this value by 50
-	move_and_slide()	#Moves player and doesn't block him on wall
 	
 
 func _on_attack_hitbox_area_entered(area: Area2D) -> void:		#checks if sword hit box is inside another thing hurtbox

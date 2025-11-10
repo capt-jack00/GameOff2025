@@ -38,7 +38,7 @@ func take_damage(attack_damage, criticalStrikeChance):
 		print("Enemy took", attack_damage, "damage! Remaining:", health)
 		alreadyTakenDamage = true
 		
-		handle_hitIndicator(attack_damage, hitCritically)
+		handle_hitIndicator(attack_damage)
 	else:
 		return
 	
@@ -48,9 +48,12 @@ func take_damage(attack_damage, criticalStrikeChance):
 		# remember this method because it's very helpful and handy to handle the death method
 		
 		
-func handle_hitIndicator(damage, hitCritically):
+func handle_hitIndicator(damage):
+	#	======================	 Create hitIndicator	======================
+	var centerContainer = CenterContainer.new()
 	var hitIndicator = Label.new()		#Create hit indicator
-	$CenterContainer.add_child(hitIndicator)	#add it as child to another control node so later it can be positioned
+	add_child(centerContainer)
+	centerContainer.add_child(hitIndicator)
 	
 	#	======================	 font	======================
 	hitIndicator.add_theme_font_override("font", font)		#set custom font
@@ -64,14 +67,16 @@ func handle_hitIndicator(damage, hitCritically):
 	hitIndicator.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 1.0))	# set border color
 	hitIndicator.add_theme_constant_override("outline_size", 5)		#set border size
 	
+	#	======================	 Set random offsets	======================
 	var maxoffset = 15
 	var offset = Vector2(-maxoffset + randi() % maxoffset * 2, -maxoffset + randi() % maxoffset * 2)	# offset from -15 to 15
-	var rotationOffset = -0.5 + randf()
-	$CenterContainer.position = Vector2(-20, -20)	#return to center
-	$CenterContainer.position += offset		#add offset
-	$CenterContainer.rotation = rotationOffset	
+	var rotationOffset = -0.75 + randf() * 1.5
+	centerContainer.position = Vector2(-20, -20)	#return to center
+	centerContainer.position += offset		#add offset
+	centerContainer.rotation = rotationOffset
 	
 	hitIndicator.text = str(-damage)		#set value of hitindicator
 	
-	await get_tree().create_timer(1.0).timeout		#delete old hit indicator after 1 second
-	hitIndicator.queue_free()
+	#	======================	 Delete hit Indicator	======================
+	await get_tree().create_timer(1.0).timeout		#wait one second
+	centerContainer.queue_free()	#delete hitIndicator and its container
