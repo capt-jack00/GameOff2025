@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 5
 @export var attack_damage := 10
+var criticalStrikeChance := 5	# this value is % for a critical strike
 
 @export var inv: Inv
 
@@ -74,4 +75,4 @@ func _physics_process(_delta):
 
 func _on_attack_hitbox_area_entered(area: Area2D) -> void:		#checks if sword hit box is inside another thing hurtbox
 	if area.is_in_group("hurtbox"):
-		area.get_parent().take_damage(attack_damage)
+		area.get_parent().take_damage(attack_damage, criticalStrikeChance)
