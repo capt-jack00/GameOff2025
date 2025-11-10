@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtd5ljfogxs3y"]
+[gd_scene load_steps=16 format=3 uid="uid://dtd5ljfogxs3y"]
 
 [ext_resource type="Script" uid="uid://x4tae4v2alej" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cdsbx888ci2wj" path="res://art/characters/soldier/Soldier.png" id="2_onrkg"]
+[ext_resource type="Resource" uid="uid://6vatqo5haabr" path="res://inventory/playerInv.tres" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://baaqofcaab25m" path="res://art/characters/soldier/Smite.png" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dwi1iq6fqovd4" path="res://inventory/InvUI.tscn" id="5_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(53, 60.25)
@@ -121,6 +123,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_onrkg")
+inv = ExtResource("2_qlg0r")
 
 [node name="PlayerModelSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -157,5 +160,11 @@ visible = false
 texture = ExtResource("3_qhqgy")
 hframes = 2
 frame = 1
+
+[node name="InvUI" parent="." instance=ExtResource("5_tuyoq")]
+offset_left = -87.0
+offset_top = -180.0
+offset_right = 87.0
+offset_bottom = -7.0
 
 [connection signal="area_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_area_entered"]

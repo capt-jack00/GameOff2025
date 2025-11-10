@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed = 5
 @export var attack_damage := 10
 
-#TODO:
+@export var inv: Inv
 
 func rotate_sword_hitbox():
 	var mousePos = get_viewport().get_mouse_position()
