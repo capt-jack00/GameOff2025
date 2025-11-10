@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qdxekrrtfc6h" path="res://art/map/ground/ground.png" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://dtd5ljfogxs3y" path="res://scenes/player.tscn" id="1_rwgxs"]
-[ext_resource type="PackedScene" uid="uid://ddxxdvt7v6g6j" path="res://scenes/area_2d.tscn" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://ddxxdvt7v6g6j" path="res://scenes/World_border.tscn" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://d3gxb6fogbd52" path="res://art/map/plants/bush.png" id="2_i7141"]
 [ext_resource type="PackedScene" uid="uid://n8615qki52vw" path="res://scenes/barrel.tscn" id="2_k0juu"]
 [ext_resource type="Texture2D" uid="uid://dinpdldlqmg7j" path="res://art/map/plants/grass.png" id="3_4mrxx"]
@@ -339,6 +339,7 @@ layer_1/tile_data = PackedInt32Array(1310731, 1, 0, 1310732, 65537, 0, 1835046, 
 position = Vector2(243, 60)
 
 [node name="Player" parent="." instance=ExtResource("1_rwgxs")]
+position = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 

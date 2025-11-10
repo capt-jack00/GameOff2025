@@ -15,9 +15,7 @@ visibility_layer = 2
 script = ExtResource("1_ptqd7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_n8wf6")
-disabled = true
 debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
 
 [node name="BarrelSprite" type="Sprite2D" parent="."]

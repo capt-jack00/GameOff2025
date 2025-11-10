@@ -55,9 +55,11 @@ func _physics_process(_delta):
 		$AnimationPlayer.play("p_attack")			#play animation of player attacking
 		$attack_hitbox/shape/StrikeSprite.visible = true		#makes strike sprite visible (sprite in front of player)
 		$attack_hitbox/shape/AnimationPlayer.play("strike")		#plays animation of strike
+		
 		$attack_hitbox.monitoring = true
 		await $AnimationPlayer.animation_finished	
 		$attack_hitbox.monitoring = false
+		
 		$attack_hitbox/shape/StrikeSprite.visible = false
 		print("Attack!")
 		
