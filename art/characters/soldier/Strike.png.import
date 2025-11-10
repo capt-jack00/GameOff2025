@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://baaqofcaab25m"
-path="res://.godot/imported/Smite.png-9beec08bd2f0cb1f921dff8cc5cb2c45.ctex"
+path="res://.godot/imported/Strike.png-92e935888a0c80c3eb07d34962d132e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/characters/soldier/Smite.png"
-dest_files=["res://.godot/imported/Smite.png-9beec08bd2f0cb1f921dff8cc5cb2c45.ctex"]
+source_file="res://art/characters/soldier/Strike.png"
+dest_files=["res://.godot/imported/Strike.png-92e935888a0c80c3eb07d34962d132e4.ctex"]
 
 [params]
 

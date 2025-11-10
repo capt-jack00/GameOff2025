@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://x4tae4v2alej" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cdsbx888ci2wj" path="res://art/characters/soldier/Soldier.png" id="2_onrkg"]
-[ext_resource type="Texture2D" uid="uid://baaqofcaab25m" path="res://art/characters/soldier/Smite.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://baaqofcaab25m" path="res://art/characters/soldier/Strike.png" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(53, 60.25)
@@ -154,6 +154,7 @@ libraries = {
 
 [node name="StrikeSprite" type="Sprite2D" parent="attack_hitbox/shape"]
 visible = false
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_qhqgy")
 hframes = 2
 frame = 1
