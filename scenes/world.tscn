@@ -340,6 +340,7 @@ position = Vector2(243, 60)
 
 [node name="Player" parent="." instance=ExtResource("1_rwgxs")]
 position = Vector2(2, 2)
+attack_damage = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 

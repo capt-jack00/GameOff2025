@@ -70,7 +70,7 @@ func handle_hitIndicator(damage):
 	#	======================	 Set random offsets	======================
 	var maxoffset = 15
 	var offset = Vector2(-maxoffset + randi() % maxoffset * 2, -maxoffset + randi() % maxoffset * 2)	# offset from -15 to 15
-	var rotationOffset = -0.75 + randf() * 1.5
+	var rotationOffset = randf() * 1.5 - 0.75
 	centerContainer.position = Vector2(-20, -20)	#return to center
 	centerContainer.position += offset		#add offset
 	centerContainer.rotation = rotationOffset

@@ -5,18 +5,16 @@ var speed = 5
 var criticalStrikeChance := 5	# this value is % for a critical strike
 
 func rotate_sword_hitbox():
-	var mousePos = get_viewport().get_mouse_position()
-	var windowSize = get_viewport().get_visible_rect().size
-	var mousePosAroundCenterOfScreen = windowSize / 2 - mousePos
-	if !$attack_hitbox.monitoring:
+	var mousePosAroundCenterOfScreen = Global.windowSize / 2 - Global.mousePos
+	if !$attack_hitbox.monitoring:		#Makes sure player can't rotate hitbox while attacking	
 		$attack_hitbox.rotation = PI / 2 - atan(mousePosAroundCenterOfScreen.x / mousePosAroundCenterOfScreen.y)
 	# equastion above works by calculating how far away from center of screen is mouse position and then
-	# doing reverse of trygonometric function(tan) to get angle at which should box be rotated
+	# doing reverse of trygonometric function(tdwan) to get angle at which should box be rotated
 	# '-' is here because it was rotating in wrong directionsd
 	# PI / 2 is here because it was displaced (PI / 2 is 90 degrees in radians) so it just got rotated right by
 	# 90 degrees
 	# when you use tan on angle you get ratio of square triangle legs. Here is exactly the same process but
-	# in reverse.
+	# in reverssd.
 		var offset = 0
 		if mousePosAroundCenterOfScreen.y >= 0:	#set offset based on where the mouse is
 			$attack_hitbox/shape/StrikeSprite.flip_h = true
@@ -50,12 +48,10 @@ func _physics_process(_delta):
 	velocity = input_vector * speed * 50	#idk why but move_and_slide is a lot slower than move_and_collide and because of that I needed to multiply this value by 50
 	move_and_slide()	#Moves player and doesn't block him on wall
 	
-	
-	
 	# --- ATTACK ---
 	handle_attack()
 	rotate_sword_hitbox()
-	#handle_attack()
+		
 		
 	#	==================	Animation handling	=========================
 	if $AnimationPlayer.current_animation != "p_attack":	# makes sure that attack doesn't get overwritten
@@ -65,14 +61,15 @@ func _physics_process(_delta):
 			$AnimationPlayer.play("soldier_walk")
 
 func handle_attack():
-	if Input.is_action_just_pressed("left_mb") && !$attack_hitbox.monitoring:
+	if Input.is_action_just_pressed("left_mb") && !$attack_hitbox.monitoring && !$InvUI.mouseOnInventory():
 		$AnimationPlayer.play("p_attack")			#play animation of player attacking
 		$attack_hitbox/shape/StrikeSprite.visible = true		#makes strike sprite visible (sprite in front of player)
 		$attack_hitbox/shape/AnimationPlayer.play("strike")		#plays animation of strike
 		 
-		$attack_hitbox.monitoring = true
-		await $AnimationPlayer.animation_finished	
-		$attack_hitbox.monitoring = false
+		await get_tree().create_timer(0.001).timeout	#without when player was spamming attack he could block hitbox changing direction
+		$attack_hitbox.monitoring = true				#turns hitbox on
+		await $AnimationPlayer.animation_finished		#waits until p_attack finishes
+		$attack_hitbox.monitoring = false				#turns hitbox off
 		
 		$attack_hitbox/shape/StrikeSprite.visible = false
 		print("Attack!")
