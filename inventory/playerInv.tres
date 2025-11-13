@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://6vatqo5haabr"]
 
-[ext_resource type="Script" uid="uid://bm8sh031uxmf1" path="res://scripts/inv_item.gd" id="1_236rr"]
+[ext_resource type="Script" uid="uid://bm8sh031uxmf1" path="res://scripts/inventory/inv_item.gd" id="1_236rr"]
 [ext_resource type="Resource" uid="uid://dy6lu6jnj7dr1" path="res://inventory/items/apple.tres" id="2_0804x"]
-[ext_resource type="Script" uid="uid://dxpeh78jbkxhd" path="res://scripts/inventory.gd" id="3_qupun"]
+[ext_resource type="Script" uid="uid://dxpeh78jbkxhd" path="res://scripts/inventory/inventory.gd" id="3_qupun"]
 
 [resource]
 script = ExtResource("3_qupun")

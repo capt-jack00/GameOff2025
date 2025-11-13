@@ -5,18 +5,17 @@ var speed = 5
 var criticalStrikeChance := 5	# this value is % for a critical strike
 
 func rotate_sword_hitbox():
-	var mousePosAroundCenterOfScreen = Global.windowSize / 2 - Global.mousePos
 	if !$attack_hitbox.monitoring:		#Makes sure player can't rotate hitbox while attacking	
-		$attack_hitbox.rotation = PI / 2 - atan(mousePosAroundCenterOfScreen.x / mousePosAroundCenterOfScreen.y)
-	# equastion above works by calculating how far away from center of screen is mouse position and then
-	# doing reverse of trygonometric function(tdwan) to get angle at which should box be rotated
-	# '-' is here because it was rotating in wrong directionsd
-	# PI / 2 is here because it was displaced (PI / 2 is 90 degrees in radians) so it just got rotated right by
-	# 90 degrees
-	# when you use tan on angle you get ratio of square triangle legs. Here is exactly the same process but
-	# in reverssd.
+		$attack_hitbox.rotation = PI / 2 - atan(Global.mousePosAroundCenterOfScreen.x / Global.mousePosAroundCenterOfScreen.y)
+# equastion above works by calculating how far away from center of screen is mouse position and then
+# doing reverse of trygonometric function(tdwan) to get angle at which should box be rotated
+# '-' is here because it was rotating in wrong directionsd
+# PI / 2 is here because it was displaced (PI / 2 is 90 degrees in radians) so it just got rotated right by
+# 90 degrees
+# when you use tan on angle you get ratio of square triangle legs. Here is exactly the same process but
+# in reverssd.
 		var offset = 0
-		if mousePosAroundCenterOfScreen.y >= 0:	#set offset based on where the mouse is
+		if Global.mousePosAroundCenterOfScreen.y <= 0:	#set offset based on where the mouse is
 			$attack_hitbox/shape/StrikeSprite.flip_h = true
 			$attack_hitbox/shape/StrikeSprite.flip_v = true
 			offset = -25

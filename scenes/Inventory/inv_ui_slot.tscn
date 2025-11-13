@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckj48xppbpbr8"]
 
-[ext_resource type="Script" uid="uid://cslu46hy835kd" path="res://scripts/inv_ui_slot.gd" id="1_n7f1c"]
+[ext_resource type="Script" uid="uid://cslu46hy835kd" path="res://scripts/inventory/inv_ui_slot.gd" id="1_n7f1c"]
 [ext_resource type="Texture2D" uid="uid://ccicavanc45rv" path="res://art/ui/ui.png" id="2_78lxs"]
 
 [node name="InvUISlot" type="Panel"]

@@ -2,6 +2,7 @@
 extends Node
 var windowSize
 var mousePos: Vector2
+var mousePosAroundCenterOfScreen: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,3 +12,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	mousePos = get_viewport().get_mouse_position()
+	mousePosAroundCenterOfScreen = (windowSize / 2 - mousePos) * -1
